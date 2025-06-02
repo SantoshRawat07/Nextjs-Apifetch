@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import { useSearch } from '../Components/context/SearchContext';
+import Image from "next/image";
 
 type PostType = {
   id: number;
@@ -130,8 +131,10 @@ const PostCards: React.FC = () => {
   {post.title}
 </h2>
 
-              <img
+              <Image
                 src={post.image}
+                width={200}
+                height={200}
                 alt={post.title}
                 style={{
                   width: "200px",

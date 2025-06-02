@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import { useSearch } from "../context/SearchContext";
 import { useEffect, useState } from "react";
@@ -8,7 +9,6 @@ const Navbar = () => {
   const [isMd, setIsMd] = useState(false);
 
   useEffect(() => {
-    // Check if window width is md (768px) or larger
     const handleResize = () => setIsMd(window.innerWidth >= 768);
     handleResize();
     window.addEventListener("resize", handleResize);
@@ -16,15 +16,15 @@ const Navbar = () => {
   }, []);
 
   const styles = {
-    nav: {
-      backgroundColor: 'black',
-      color: 'white',
-      position: 'fixed',
-      width: '100%',
-      top: 0,
-      boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
-      zIndex: 1000,
-    },
+   nav: {
+    backgroundColor: 'black',
+    color: 'white',
+    position: 'fixed' as const,
+    width: '100%',
+    top: 0,
+    boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+    zIndex: 1000,
+  },
     container: {
       margin: '0 auto',
       padding: '16px',
@@ -38,8 +38,7 @@ const Navbar = () => {
       letterSpacing: '1px',
       textDecoration: 'none',
       color: 'white',
-      flex: 1,
-      textAlign: 'left',
+      textAlign: 'left' as const, // Fix type error here
     },
     rightSection: {
       display: 'flex',
@@ -73,8 +72,8 @@ const Navbar = () => {
   return (
     <nav style={styles.nav}>
       <div style={styles.container}>
-        <Link href="/" style={styles.brand}>
-          Shopping Hub
+        <Link href="/">
+          <span style={styles.brand}>Shopping Hub</span>
         </Link>
         <div style={styles.rightSection}>
           <input
